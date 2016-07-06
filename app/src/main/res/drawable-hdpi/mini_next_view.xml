@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="true" android:drawable="@drawable/mini_next_white"></item>
+    <item android:drawable="@drawable/mini_next"></item>
+    <!--<item android:state_checkable="true" android:drawable="@drawable/pause"></item>-->
+</selector>

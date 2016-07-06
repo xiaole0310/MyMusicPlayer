@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/main_top_bar_bg"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" >
+
+            <!--<ImageView-->
+                <!--android:id="@+id/back"-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:background="@drawable/play_activity_back" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="本地音乐"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" >
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tabhost_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/miniplayer"
+        android:orientation="vertical"
+        android:layout_weight="12">
+
+        <TabHost
+            android:id="@android:id/tabhost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent">
+
+                <RadioGroup
+                    android:id="@+id/songinfo_radiogroup"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioButtonLocal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rediobutton1"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="全部歌曲" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonSinger"
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rediobutton1"
+                        android:button="@null"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:text="歌手分类" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonFolder"
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rediobutton1"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="文件夹" />
+
+                </RadioGroup>
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/songinfo_radiogroup"
+                    android:background="@android:color/darker_gray" >
+                </FrameLayout>
+            </RelativeLayout>
+        </TabHost>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/miniplayer"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/mini_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/widget_qqmusic_default_album"
+                android:layout_gravity="center|left" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/song"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toLeftOf="@+id/button"
+            android:layout_weight="8">
+
+
+            <TextView
+                android:id="@+id/song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="未命名"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/singer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="未命名"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/song"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_weight="2">
+            <ImageButton
+                android:id="@+id/pre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mini_pre_view"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/play_or_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/mini_play_btn_view"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mini_next_view"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

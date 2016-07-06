@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context="com.example.howard.mp3player.MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:src="@drawable/logo1"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"
+            android:progressDrawable="@drawable/seekbar_drawable"
+            android:thumb="@drawable/seekbar_thumb"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0:00"
+                android:id="@+id/timestart" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0:00"
+                android:id="@+id/timeend"
+                android:layout_marginLeft="295dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom">
+
+        <ImageButton
+            android:id="@+id/pre"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/pre"
+            android:layout_gravity="center|left" />
+
+        <ImageButton
+            android:id="@+id/play"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/play_btn_view" />
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/stop"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/stop"/>-->
+
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/next"
+            android:layout_gravity="center|right" />
+    </LinearLayout>
+</LinearLayout>

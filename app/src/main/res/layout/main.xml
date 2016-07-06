@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/tabhost_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/miniplayer"
+        android:orientation="vertical"
+        android:layout_weight="12">
+
+        <TabHost
+            android:id="@android:id/tabhost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent">
+
+                <RadioGroup
+                    android:id="@+id/radiogroup"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioButtonMy"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rediobutton1"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="我的音乐"
+                        android:textStyle="bold"
+                        android:textSize="20dp" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonInter"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rediobutton1"
+                        android:button="@null"
+                        android:enabled="true"
+                        android:gravity="center"
+                        android:text="乐库"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+
+                </RadioGroup>
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_below="@+id/radiogroup"
+                    android:background="@android:color/white">
+                </FrameLayout>
+            </RelativeLayout>
+        </TabHost>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/miniplayer"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/main_mini_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/widget_qqmusic_default_album"
+                android:layout_gravity="center|left" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_song"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toLeftOf="@+id/button"
+            android:layout_weight="8">
+
+
+            <TextView
+                android:id="@+id/main_song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="未命名"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/main_singer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="未命名"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/song"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_weight="2">
+            <ImageButton
+                android:id="@+id/main_pre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mini_pre_view"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/main_play_or_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/mini_play_btn_view"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/main_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mini_next_view"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

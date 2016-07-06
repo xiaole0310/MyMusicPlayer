@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.howard.mp3player">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar">
+        // android:theme="@style/AppTheme"
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LocalSongInfo.PlayActivity" />>
+        <activity android:name=".FileManager.ImportSong" />
+
+        <service android:name=".Service.MusicPlayerService" />
+
+        <activity android:name=".LocalSongInfo.TabSongActivity" />
+        <activity android:name=".LocalSongInfo.SongInfoLocal" >
+        </activity>
+        <activity android:name=".LocalSongInfo.SongInfoSingerMain" />
+        <activity android:name=".LocalSongInfo.SongInfoFolderMain" />
+        <activity android:name=".LocalSongInfo.LocalSong" />
+        <activity android:name=".Internet.InternetMain"></activity>
+    </application>
+
+</manifest>

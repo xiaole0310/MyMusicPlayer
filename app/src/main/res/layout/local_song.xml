@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.howard.mp3player.LocalSongInfo.LocalSong"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:background="@drawable/account_bg"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+
+        <RelativeLayout
+            android:id="@+id/all_music_view"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:onClick="ClickToMyLocal"
+            android:background="@drawable/play_list_view" >
+
+            <ImageView
+                android:id="@+id/allmusic_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cloud_all_music" />
+
+            <TextView
+                android:id="@+id/allmusic_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/allmusic_icon"
+                android:text="全部歌曲"
+                android:textSize="18dp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/allmusic_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/allmusic_text1"
+                android:layout_toRightOf="@+id/allmusic_icon"
+                android:text="本地0首"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/recently_music_view"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:background="@drawable/play_list_view" >
+
+            <ImageView
+                android:id="@+id/r_music_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cloud_i_like" />
+
+            <TextView
+                android:id="@+id/r_music_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/r_music_icon"
+                android:text="最近听过"
+                android:textSize="18dp"
+                android:textColor="#000000" />
+            <TextView
+                android:id="@+id/r_music_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/r_music_text1"
+                android:layout_toRightOf="@+id/r_music_icon"
+                android:text="最近听过0首"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
