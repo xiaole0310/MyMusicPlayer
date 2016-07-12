@@ -17,6 +17,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.example.howard.mp3player.Internet.InternetMain;
+import com.example.howard.mp3player.Internet.SongRankingActivity;
 import com.example.howard.mp3player.LocalSongInfo.LocalSong;
 import com.example.howard.mp3player.LocalSongInfo.PlayActivity;
 import com.example.howard.mp3player.Service.MusicPlayerService;
@@ -85,7 +86,8 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
                 }
             }
         });
-
+        Intent intent =new Intent(MainActivity.this,SongRankingActivity.class);
+        startActivity(intent);
 
     }
 
@@ -170,10 +172,10 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
         }
     }
     public void changeToPlay(){
-        play.setBackground(this.getResources().getDrawable(R.drawable.mini_play));
+//        play.setBackground(this.getResources().getDrawable(R.drawable.mini_play));
     }
     public void changeToPause(){
-        play.setBackground(this.getResources().getDrawable(R.drawable.mini_pause));
+//        play.setBackground(this.getResources().getDrawable(R.drawable.mini_pause));
     }
     public void setView(){
         radioGroup= (RadioGroup) findViewById(R.id.radiogroup);

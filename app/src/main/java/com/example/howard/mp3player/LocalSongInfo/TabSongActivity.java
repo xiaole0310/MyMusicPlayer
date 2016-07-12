@@ -169,10 +169,10 @@ public class TabSongActivity extends TabActivity implements RadioGroup.OnChecked
         }
     }
     public void changeToPlay(){
-        play.setBackground(this.getResources().getDrawable(R.drawable.mini_play));
+//        play.setBackground(this.getResources().getDrawable(R.drawable.mini_play));
     }
     public void changeToPause(){
-        play.setBackground(this.getResources().getDrawable(R.drawable.mini_pause));
+//        play.setBackground(this.getResources().getDrawable(R.drawable.mini_pause));
     }
     public void setView(){
         radioGroup= (RadioGroup) findViewById(R.id.songinfo_radiogroup);

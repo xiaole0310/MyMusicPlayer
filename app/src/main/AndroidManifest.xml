@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.howard.mp3player">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -30,7 +31,8 @@
         <activity android:name=".LocalSongInfo.SongInfoSingerMain" />
         <activity android:name=".LocalSongInfo.SongInfoFolderMain" />
         <activity android:name=".LocalSongInfo.LocalSong" />
-        <activity android:name=".Internet.InternetMain"></activity>
+        <activity android:name=".Internet.InternetMain" />
+        <activity android:name=".Internet.SongRankingActivity"></activity>
     </application>
 
 </manifest>

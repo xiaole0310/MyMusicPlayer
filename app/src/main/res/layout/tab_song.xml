@@ -113,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/songinfo_radiogroup"
-                    android:background="@android:color/darker_gray" >
+                    android:background="@android:color/background_dark" >
                 </FrameLayout>
             </RelativeLayout>
         </TabHost>
