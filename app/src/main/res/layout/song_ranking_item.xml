@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="match_parent"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/rankingChanelImage"
+        android:layout_width="match_parent"
+        android:layout_height="80dp" />
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/rankingChanelName"
+        android:layout_below="@id/rankingChanelImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginBottom="20dp" />
+</RelativeLayout>

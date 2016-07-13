@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.howard.mp3player"
-        minSdkVersion 10
+        minSdkVersion 20
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -27,5 +27,8 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.0'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
-
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.jcodecraeer:xrecyclerview:1.2.7'
+    compile files('libs/httpclient-4.2.5.jar')
+    compile files('libs/httpclient-cache-4.2.5.jar')
 }

@@ -18,5 +18,5 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:text="歌手名"
-        android:textColor="#ffffff" />
+        android:textColor="#000000" />
 </LinearLayout>

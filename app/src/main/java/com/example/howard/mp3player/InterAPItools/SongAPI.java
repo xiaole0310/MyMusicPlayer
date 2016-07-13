@@ -16,8 +16,15 @@ public interface SongAPI {
 
     @GET("v1/restserver/ting")
     Call<SongRankingBean> getSongRanking (@Query("format") String format, @Query("callback")String callback, @Query("from") String from,
-                                          @Query("method") String method , @Query("type") int type, @Query("size") int size, @Query("offset") int offset);
+                                          @Query("method") String method , @Query("type") int type, @Query("size") int size,
+                                          @Query("offset") int offset);
 
+    @GET("v1/restserver/ting")
+    Call<SongRankingBean> getSingerSong (@Query("format") String format, @Query("callback")String callback, @Query("from") String from,
+                                          @Query("method") String method , @Query("tinguid") int tinguid, @Query("limits") int limits,
+                                          @Query("use_cluster") int use_cluster,@Query("order") int order);
 
-
+    @GET("v1/restserver/ting")
+    Call<SongRankingBean> getSearch (@Query("format") String format, @Query("callback")String callback, @Query("from") String from,
+                                         @Query("method") String method , @Query("query") String query);
 }

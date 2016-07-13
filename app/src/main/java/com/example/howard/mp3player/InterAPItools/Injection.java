@@ -1,6 +1,4 @@
-package com.example.howard.mp3player;
-
-import com.example.howard.mp3player.InterAPItools.SongAPI;
+package com.example.howard.mp3player.InterAPItools;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -31,7 +29,7 @@ public class Injection {
                 .build();
     }
 
-    public static SongAPI provideSongRankingAPI() {
+    public static SongAPI provideSongAPI() {
 
        return Injection.provideRetrofit().create(SongAPI.class);
     }

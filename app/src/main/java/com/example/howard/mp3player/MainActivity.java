@@ -1,12 +1,10 @@
 package com.example.howard.mp3player;
 
-import android.app.Activity;
 import android.app.TabActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +15,8 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.example.howard.mp3player.Internet.InternetMain;
-import com.example.howard.mp3player.Internet.SongRankingActivity;
+import com.example.howard.mp3player.Internet.SongRankingListActivity;
+import com.example.howard.mp3player.Internet.SongRankingMainActivity;
 import com.example.howard.mp3player.LocalSongInfo.LocalSong;
 import com.example.howard.mp3player.LocalSongInfo.PlayActivity;
 import com.example.howard.mp3player.Service.MusicPlayerService;
@@ -86,7 +85,7 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
                 }
             }
         });
-        Intent intent =new Intent(MainActivity.this,SongRankingActivity.class);
+        Intent intent =new Intent(MainActivity.this,SongRankingMainActivity.class);
         startActivity(intent);
 
     }
