@@ -3,16 +3,27 @@ package com.example.howard.mp3player.Bean;
 import java.util.List;
 
 /**
- * Created by Howard on 2016/7/11.
+ * Created by Howard on 2016/7/19.
  */
 public class SearchBean {
 
+    @Override
+    public String toString() {
+        return "SearchBean{" +
+                "order='" + order + '\'' +
+                ", error_code=" + error_code +
+                ", song=" + song +
+                ", album=" + album +
+                ", artist=" + artist +
+                '}';
+    }
+
     /**
-     * song : [{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"海阔天空","artistname":"Beyond","control":"0000000000","songid":"877578","has_mv":"1","encrypted_songid":"4205d640a0956210255L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"海阔天空","artistname":"黄家驹","control":"0000000000","songid":"14795583","has_mv":"1","encrypted_songid":"3306e1c33f0956b2ababL"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"海阔天空","artistname":"信乐团","control":"0000000000","songid":"414187","has_mv":"0","encrypted_songid":"7005651eb09561d0e24L"},{"bitrate_fee":"{\"0\":\"129|-1\",\"1\":\"-1|-1\"}","yyr_artist":"0","songname":"海阔天空","artistname":"林忆莲","control":"0000000000","songid":"14880013","has_mv":"0","encrypted_songid":"1606e30d0d095771062dL"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"海阔天空","artistname":"张惠妹","control":"0000000000","songid":"99035490","has_mv":"1","encrypted_songid":"48075e7296209568ba886L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"海阔天空","artistname":"汤晶锦","control":"0000000000","songid":"246509600","has_mv":"0","encrypted_songid":"9507eb17020095685d598L"},{"bitrate_fee":"{\"0\":\"129|-1\",\"1\":\"-1|-1\"}","yyr_artist":"0","songname":"海阔天空 (2008 Live)","artistname":"叶世荣","control":"0000000000","songid":"18396923","has_mv":"0","encrypted_songid":"5007118b6fb0956236ba5L"},{"bitrate_fee":"{\"0\":\"129|-1\",\"1\":\"-1|-1\"}","yyr_artist":"0","songname":"海阔天空","artistname":"Robynn & Kendy","control":"0000000000","songid":"118764007","has_mv":"0","encrypted_songid":"430771431e7095621b712L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"海阔天空 - 清风明月","artistname":"信乐团","control":"0000000000","songid":"85776267","has_mv":"0","encrypted_songid":"930751cd78b09561d065aL"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"海阔天空","artistname":"欢子","control":"0000000000","songid":"109915269","has_mv":"0","encrypted_songid":"240768d2c8509561d4a9eL"}]
-     * album : [{"albumname":"海阔天空","artistpic":"http://qukufile2.qianqian.com/data2/pic/88582736/88582736.jpg","albumid":"197864","artistname":"Beyond"},{"albumname":"海阔天空","artistpic":"http://qukufile2.qianqian.com/data2/pic/88406885/88406885.jpg","albumid":"72973","artistname":"信乐团"},{"albumname":"海阔天空任我闯","artistpic":"http://a.hiphotos.baidu.com/ting/pic/item/6a600c338744ebf8aa2ec829dbf9d72a6059a74d.jpg","albumid":"25534678","artistname":"张明敏"},{"albumname":"天路","artistpic":"http://qukufile2.qianqian.com/data2/pic/032a5340d8a3376beceba749f95a1217/261964210/261964210.jpg","albumid":"14469195","artistname":"海阔天空"},{"albumname":"单曲 - 天路","artistpic":"http://qukufile2.qianqian.com/data2/pic/39965814/39965814.jpg","albumid":"15378905","artistname":"海阔天空组合"},{"albumname":"喀秋莎","artistpic":"http://qukufile2.qianqian.com/data2/pic/39648117/39648117.jpg","albumid":"14469061","artistname":"海阔天空"},{"albumname":"单曲 - 海阔天空","artistpic":"http://qukufile2.qianqian.com/data2/pic/43514877/43514877.jpg","albumid":"22164314","artistname":"亮亮"}]
+     * song : [{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"黄昏","artistname":"周传雄","control":"0000000000","songid":"2124144","has_mv":"1","encrypted_songid":"00062069700956a1c461L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"黄昏的心","artistname":"张宇","control":"0000000000","songid":"1292754","has_mv":"0","encrypted_songid":"120613b9d209561d1c09L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"黄昏","artistname":"云朵","control":"0000000000","songid":"7134797","has_mv":"0","encrypted_songid":"65066cde4d09561d38c8L"},{"bitrate_fee":"{\"0\":\"129|-1\",\"1\":\"-1|-1\"}","yyr_artist":"0","songname":"黄昏里","artistname":"邓丽君","control":"0000000000","songid":"130236599","has_mv":"0","encrypted_songid":"20077c340b7095623ad1bL"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"黄昏","artistname":"新雅室内乐","control":"0000000000","songid":"121032821","has_mv":"0","encrypted_songid":"7407736d07509576264b9L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"黄昏","artistname":"罗文","control":"0000000000","songid":"14572354","has_mv":"0","encrypted_songid":"4906de5b4209561d19b6L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"黄昏","artistname":"押尾コータロー","control":"0000000000","songid":"52949213","has_mv":"0","encrypted_songid":"5307327f0dd09561cf027L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"黄昏放牛","artistname":"毛宁","control":"0000000000","songid":"23275598","has_mv":"0","encrypted_songid":"0507163284e09571f0d79L"},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"1","songname":"黄昏(邵夷贝、李志)","artistname":"邵夷贝","control":"0100000000","songid":"73976995","has_mv":"0","encrypted_songid":""},{"bitrate_fee":"{\"0\":\"0|0\",\"1\":\"0|0\"}","yyr_artist":"0","songname":"黄昏","artistname":"潘美辰","control":"0000000000","songid":"14470445","has_mv":"0","encrypted_songid":"1106dccd2d09561d056eL"}]
+     * album : [{"albumname":"黄昏里的老男孩","artistpic":"http://qukufile2.qianqian.com/data2/pic/89035284/89035284.jpg","albumid":"12757314","artistname":"刘明辉"},{"albumname":"暗黒能楽集・心綺楼","artistpic":"http://c.hiphotos.baidu.com/ting/pic/item/5d6034a85edf8db1f577174d0b23dd54564e74b9.jpg","albumid":"91479362","artistname":"黄昏フロンティア"},{"albumname":"黄昏双镖客","artistpic":"http://qukufile2.qianqian.com/data2/pic/40213477/40213477.jpg","albumid":"15780189","artistname":"埃尼奥 莫里康内"},{"albumname":"魔理沙と6つのキノコ original soundtrack","artistpic":"","albumid":"23869045","artistname":"黄昏フロンティア"},{"albumname":"黄昏思情","artistpic":"http://qukufile2.qianqian.com/data2/pic/40334877/40334877.jpg","albumid":"2019169","artistname":"阿吉仔"},{"albumname":"黄昏的那份情","artistpic":"http://qukufile2.qianqian.com/data2/pic/101025355/101025355.jpg","albumid":"69972202","artistname":"陈惠弟"},{"albumname":"黄昏渡","artistpic":"http://qukufile2.qianqian.com/data2/pic/b611c69078ced3a8f63b66aeaa4a8d3b/261438472/261438472.jpg","albumid":"261438688","artistname":"侯梦亮"},{"albumname":"黄昏","artistpic":"http://qukufile2.qianqian.com/data2/pic/101172138/101172138.jpg","albumid":"83667397","artistname":"朱昊楠"},{"albumname":"黄昏オレンジ","artistpic":"http://qukufile2.qianqian.com/data2/pic/43723482/43723482.jpg","albumid":"26749536","artistname":"サクラメリーメン"},{"albumname":"黄昏エレジ","artistpic":"http://b.hiphotos.baidu.com/ting/pic/item/a8014c086e061d958cfa9a2e79f40ad162d9ca6c.jpg","albumid":"25524922","artistname":"豚乙女"}]
      * order : artist,song,album
      * error_code : 22000
-     * artist : [{"yyr_artist":"0","artistid":"2345733","artistpic":"http://a.hiphotos.baidu.com/ting/abpic/item/6d81800a19d8bc3eb42695cc808ba61ea8d3458d.jpg","artistname":"海阔天空"},{"yyr_artist":"0","artistid":"87930765","artistpic":"http://b.hiphotos.baidu.com/ting/abpic/item/d788d43f8794a4c2fb089b370cf41bd5ad6e3986.jpg","artistname":"海阔天空组合"}]
+     * artist : [{"yyr_artist":"0","artistid":"209711202","artistpic":"http://b.hiphotos.baidu.com/ting/abpic/item/a71ea8d3fd1f413494979b4e231f95cad1c85e59.jpg","artistname":"黄昏フロンティア"}]
      */
 
     private String order;
@@ -20,28 +31,28 @@ public class SearchBean {
     /**
      * bitrate_fee : {"0":"0|0","1":"0|0"}
      * yyr_artist : 0
-     * songname : 海阔天空
-     * artistname : Beyond
+     * songname : 黄昏
+     * artistname : 周传雄
      * control : 0000000000
-     * songid : 877578
+     * songid : 2124144
      * has_mv : 1
-     * encrypted_songid : 4205d640a0956210255L
+     * encrypted_songid : 00062069700956a1c461L
      */
 
     private List<SongBean> song;
     /**
-     * albumname : 海阔天空
-     * artistpic : http://qukufile2.qianqian.com/data2/pic/88582736/88582736.jpg
-     * albumid : 197864
-     * artistname : Beyond
+     * albumname : 黄昏里的老男孩
+     * artistpic : http://qukufile2.qianqian.com/data2/pic/89035284/89035284.jpg
+     * albumid : 12757314
+     * artistname : 刘明辉
      */
 
     private List<AlbumBean> album;
     /**
      * yyr_artist : 0
-     * artistid : 2345733
-     * artistpic : http://a.hiphotos.baidu.com/ting/abpic/item/6d81800a19d8bc3eb42695cc808ba61ea8d3458d.jpg
-     * artistname : 海阔天空
+     * artistid : 209711202
+     * artistpic : http://b.hiphotos.baidu.com/ting/abpic/item/a71ea8d3fd1f413494979b4e231f95cad1c85e59.jpg
+     * artistname : 黄昏フロンティア
      */
 
     private List<ArtistBean> artist;

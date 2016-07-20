@@ -85,8 +85,8 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
                 }
             }
         });
-        Intent intent =new Intent(MainActivity.this,SongRankingMainActivity.class);
-        startActivity(intent);
+//        Intent intent =new Intent(MainActivity.this,SongRankingMainActivity.class);
+//        startActivity(intent);
 
     }
 

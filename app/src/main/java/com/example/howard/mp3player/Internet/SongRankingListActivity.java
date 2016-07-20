@@ -1,7 +1,10 @@
 package com.example.howard.mp3player.Internet;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteCantOpenDatabaseException;
 import android.os.Bundle;
@@ -15,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +27,7 @@ import com.example.howard.mp3player.Bean.SongRankingBean;
 import com.example.howard.mp3player.InterAPItools.ImageUtils;
 import com.example.howard.mp3player.InterAPItools.Injection;
 import com.example.howard.mp3player.R;
+import com.example.howard.mp3player.Service.NetSongDownloadServer;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -49,6 +54,8 @@ public class SongRankingListActivity extends Activity {
     private MyHandler myHandler;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +74,7 @@ public class SongRankingListActivity extends Activity {
         net();
         //加载网络信息
         getRankingInfo(rankingnum);
+
     }
 
     @Override
@@ -198,16 +206,25 @@ public class SongRankingListActivity extends Activity {
                         .findViewById(R.id.ranking_song_name);
                 viewHolder.siner_name = (TextView) convertView
                         .findViewById(R.id.ranking_singer_name);
-
+                viewHolder.download= (ImageButton) convertView
+                        .findViewById(R.id.downloadbty);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
+//            Log.e("urlpath",rankingsongbeanlist.get(position).getPic_small());
             Picasso.with(context).load(rankingsongbeanlist.get(position).getPic_small()).into(viewHolder.song_Image);
 //            Log.e("urlpath",rankingsongbeanlist.get(position).getPic_small());
 //            viewHolder.song_Image.setImageBitmap(imageUtils.getImg(rankingsongbeanlist.get(position).getPic_small()));
             viewHolder.song_name.setText(rankingsongbeanlist.get(position).getTitle());
             viewHolder.siner_name.setText(rankingsongbeanlist.get(position).getArtist_name());
+
+            viewHolder.download.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog(position);
+                }
+            });
 
             return convertView;
         }
@@ -216,8 +233,39 @@ public class SongRankingListActivity extends Activity {
             ImageView song_Image;
             TextView song_name;
             TextView siner_name;
+            ImageButton download;
 
         }
+    }
+
+
+    protected void dialog(final int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("确认要下载歌曲到本地吗？");
+
+        builder.setTitle("请求下载歌曲");
+
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent=new Intent(SongRankingListActivity.this, NetSongDownloadServer.class);
+//                Log.e("Activity",rankingsongbeanlist.get(position).getSong_id());
+                intent.putExtra("songID",rankingsongbeanlist.get(position).getSong_id());
+                startService(intent);
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
     }
 
     private static final int SET_RANKINGBEAN = 123;

@@ -39,7 +39,7 @@ public class MyApplication extends Application {
 //            url=musicPlayerService.url;
 //            musicPlayerService.play(url);
 //        }else {
-//            musicPlayerService.pesition=musicPlayerService.list.size()-1;
+//            musicPlayerService.pesition=musicPlayerService.songbysearchlist.size()-1;
 //            musicPlayerService.callMedia(musicPlayerService.pesition);
 //            url=musicPlayerService.url;
 //            musicPlayerService.play(url);
@@ -60,7 +60,7 @@ public class MyApplication extends Application {
 //
 //    public void nextClick() throws IOException {
 //        musicPlayerService.pesition=musicPlayerService.pesition+1;
-//        if(musicPlayerService.pesition!=musicPlayerService.list.size()){
+//        if(musicPlayerService.pesition!=musicPlayerService.songbysearchlist.size()){
 //            musicPlayerService.callMedia(musicPlayerService.pesition);
 //            url=musicPlayerService.url;
 //            musicPlayerService.play(url);

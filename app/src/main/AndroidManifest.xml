@@ -20,20 +20,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LocalSongInfo.PlayActivity" />>
-        <activity android:name=".FileManager.ImportSong" />
+        <activity android:name=".LocalSongInfo.PlayActivity" />
 
         <service android:name=".Service.MusicPlayerService" />
+        <service android:name=".Service.NetSongDownloadServer" />
 
         <activity android:name=".LocalSongInfo.TabSongActivity" />
-        <activity android:name=".LocalSongInfo.SongInfoLocal" >
-        </activity>
+        <activity android:name=".LocalSongInfo.SongInfoLocal" />
         <activity android:name=".LocalSongInfo.SongInfoSingerMain" />
         <activity android:name=".LocalSongInfo.SongInfoFolderMain" />
         <activity android:name=".LocalSongInfo.LocalSong" />
         <activity android:name=".Internet.InternetMain" />
         <activity android:name=".Internet.SongRankingMainActivity" />
-        <activity android:name=".Internet.SongRankingListActivity"></activity>
+        <activity android:name=".Internet.SongRankingListActivity" />
+        <activity android:name=".Internet.SongSearchActivity" />
+        <activity android:name=".Internet.SingerSongSearchActivity" />
+        <activity android:name=".Internet.InternetSearchTab"></activity>
     </application>
 
 </manifest>

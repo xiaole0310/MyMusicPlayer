@@ -1,6 +1,9 @@
 package com.example.howard.mp3player.InterAPItools;
 
+import com.example.howard.mp3player.Bean.PlayBean;
+import com.example.howard.mp3player.Bean.SearchBean;
 import com.example.howard.mp3player.Bean.SingerSongBean;
+import com.example.howard.mp3player.Bean.SongDownloadBean;
 import com.example.howard.mp3player.Bean.SongRankingBean;
 
 import retrofit2.Call;
@@ -20,11 +23,19 @@ public interface SongAPI {
                                           @Query("offset") int offset);
 
     @GET("v1/restserver/ting")
-    Call<SongRankingBean> getSingerSong (@Query("format") String format, @Query("callback")String callback, @Query("from") String from,
-                                          @Query("method") String method , @Query("tinguid") int tinguid, @Query("limits") int limits,
+    Call<SingerSongBean> getSingerSong (@Query("format") String format, @Query("callback")String callback, @Query("from") String from,
+                                          @Query("method") String method , @Query("tinguid") String tinguid, @Query("limits") int limits,
                                           @Query("use_cluster") int use_cluster,@Query("order") int order);
 
     @GET("v1/restserver/ting")
-    Call<SongRankingBean> getSearch (@Query("format") String format, @Query("callback")String callback, @Query("from") String from,
-                                         @Query("method") String method , @Query("query") String query);
+    Call<SearchBean> getSearch (@Query("format") String format, @Query("callback")String callback, @Query("from") String from,
+                                @Query("method") String method , @Query("query") String query);
+
+    @GET("v1/restserver/ting")
+    Call<PlayBean> getPlay (@Query("format") String format, @Query("callback")String callback, @Query("from") String from,
+                              @Query("method") String method , @Query("songid") String songid);
+
+    @GET("v1/restserver/ting")
+    Call<SongDownloadBean> getdownloadsong (@Query("format") String format, @Query("callback")String callback, @Query("from") String from,
+                                            @Query("method") String method , @Query("songid") long songid, @Query("bit") int bit, @Query("_t") long t);
 }

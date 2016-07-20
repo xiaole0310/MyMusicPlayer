@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.howard.mp3player"
-        minSdkVersion 20
+        minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -31,4 +31,5 @@ dependencies {
     compile 'com.jcodecraeer:xrecyclerview:1.2.7'
     compile files('libs/httpclient-4.2.5.jar')
     compile files('libs/httpclient-cache-4.2.5.jar')
+    compile files('libs/fastjson-1.2.2.jar')
 }
