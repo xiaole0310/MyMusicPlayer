@@ -57,10 +57,10 @@ public class GetListBySingerSong {
             public void response(String url, byte[] bytes) {
                 super.response(url, bytes);
                 String json = new String(bytes);
-                Log.e("json", json.toString());
+//                Log.e("json", json.toString());
                 String Json = json.trim();
                 SearchBean bean = fastJsonTools.createJsonBean(Json, SearchBean.class);
-                Log.e("bean", bean.toString());
+//                Log.e("bean", bean.toString());
                 getSingerid(bean);
             }
         });
@@ -72,7 +72,7 @@ public class GetListBySingerSong {
 //        Log.e("search",searchBean.toString());
         if (searchBean.getArtist() != null) {
             singerid = searchBean.getArtist().get(0).getArtistid();
-            Log.e("singerid",singerid);
+//            Log.e("singerid",singerid);
             getsongbysingerid(singerid);
         } else {
             callback.singernull();
@@ -86,17 +86,17 @@ public class GetListBySingerSong {
         call.enqueue(new retrofit2.Callback<SingerSongBean>() {
             @Override
             public void onResponse(Call<SingerSongBean> call, Response<SingerSongBean> response) {
-                Log.e("singer", "true");
+//                Log.e("singer", "true");
                 SingerSongBean bean=response.body();
 //                SingerSongBean singerSongBean=new SingerSongBean();
 //                singerSongBean=bean;
-                Log.e("singer", bean.toString());
+//                Log.e("singer", bean.toString());
                 getsingersong(bean);
             }
 
             @Override
             public void onFailure(Call<SingerSongBean> call, Throwable t) {
-                Log.e("singer", "true");
+//                Log.e("singer", "true");
             }
         });
 

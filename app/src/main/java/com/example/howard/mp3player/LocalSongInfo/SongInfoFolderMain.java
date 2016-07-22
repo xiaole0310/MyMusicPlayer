@@ -134,6 +134,7 @@ public class SongInfoFolderMain extends Activity implements AdapterView.OnItemCl
                                     long arg3) {
                 String folderpath=folderPath.get(arg2);
                 showFolderSong(folderpath);
+                mypesition=-1;
             }
         };
         return songListclickListener;
@@ -144,7 +145,7 @@ public class SongInfoFolderMain extends Activity implements AdapterView.OnItemCl
 
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
-
+                musicPlayerService=myApplication.musicPlayerService;
                 Intent intent = new Intent(SongInfoFolderMain.this,
                         MusicPlayerService.class);
                 intent.putExtra("Activity","Folder");
@@ -152,14 +153,14 @@ public class SongInfoFolderMain extends Activity implements AdapterView.OnItemCl
 
                 if (mypesition != arg2) {
                     intent.putExtra("what", "play");
-                    play_state = 1;
+//                    play_state = 1;
                     mypesition = arg2;
-                } else if (mypesition == arg2 && play_state == 1) {
+                } else if (mypesition == arg2 && musicPlayerService.mediaPlayer.isPlaying()) {
                     intent.putExtra("what", "pause");
-                    play_state = 0;
-                } else if (mypesition == arg2 && play_state == 0) {
+//                    play_state = 0;
+                } else if (mypesition == arg2 && !musicPlayerService.mediaPlayer.isPlaying()) {
                     intent.putExtra("what", "restart");
-                    play_state = 1;
+//                    play_state = 1;
                 }
                 myApplication.setMydatalist(foldersonglist);
                 startService(intent);

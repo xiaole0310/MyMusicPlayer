@@ -53,6 +53,9 @@ public class NetSongDownloadServer extends Service{
                 SongDownloadBean bean = response.body();
                 Log.e("file",bean.getBitrate().get(0).getShow_link());
                 path=bean.getBitrate().get(0).getShow_link();
+                if (path.equals("")||path==null){
+                    path=bean.getBitrate().get(0).getFile_link();
+                }
                 songname=bean.getSonginfo().getTitle()+"."+bean.getBitrate().get(0).getFile_extension();
                 Log.e("CALL",songID);
                 Log.e("CALL",path);

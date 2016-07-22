@@ -26,7 +26,7 @@ import com.example.howard.mp3player.R;
 import java.util.List;
 import java.util.Map;
 
-public  class  SongInfoLocal extends Activity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener {
+public  class  SongInfoLocal extends Activity  {
 
     public ListView listView;
     public  List<Map<String, Object>> localdatalist;
@@ -89,7 +89,7 @@ public  class  SongInfoLocal extends Activity implements AdapterView.OnItemClick
 
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
-
+                musicPlayerService=myApplication.musicPlayerService;
                 Intent intent = new Intent(SongInfoLocal.this,
                         MusicPlayerService.class);
                 intent.putExtra("Activity","Local");
@@ -97,14 +97,14 @@ public  class  SongInfoLocal extends Activity implements AdapterView.OnItemClick
 
                 if (mypesition != arg2) {
                     intent.putExtra("what", "play");
-                    play_state = 1;
+//                    play_state = 1;
                     mypesition = arg2;
-                } else if (mypesition == arg2 && play_state == 1) {
+                } else if (mypesition == arg2 &&musicPlayerService.mediaPlayer.isPlaying()) {
                     intent.putExtra("what", "pause");
-                    play_state = 0;
-                } else if (mypesition == arg2 && play_state == 0) {
+//                    play_state = 0;
+                } else if (mypesition == arg2 &&!musicPlayerService.mediaPlayer.isPlaying()) {
                     intent.putExtra("what", "restart");
-                    play_state = 1;
+//                    play_state = 1;
                 }
                 myApplication.setMydatalist(localdatalist);
 //                musicPlayerService.setList(localdatalist);
@@ -206,16 +206,7 @@ public  class  SongInfoLocal extends Activity implements AdapterView.OnItemClick
         }
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-    }
-
-
-    @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        return false;
-    }
 
     protected void dialog(final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

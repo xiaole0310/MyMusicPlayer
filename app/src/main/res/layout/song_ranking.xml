@@ -4,16 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@android:color/white"
+    android:background="#000000"
     tools:context=".Internet.SongRankingMainActivity">
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="60dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="排行榜"
@@ -21,12 +17,15 @@
         android:textSize="40dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#000000"
-        android:textIsSelectable="false" />
+        android:textIsSelectable="false"
+        android:background="#ffffff" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="12"
+        android:background="#ffffff">
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
@@ -35,5 +34,91 @@
             android:layout_alignParentTop="true" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ranking_miniplayer"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:gravity="bottom"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/ranking_mini_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/widget_qqmusic_default_album"
+                android:layout_gravity="center|left" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ranking_song"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toLeftOf="@+id/ranking_button"
+            android:layout_weight="8">
+
+
+            <TextView
+                android:id="@+id/ranking_song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="未命名"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/ranking_singer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="未命名"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ranking_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/ranking_song"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_weight="2">
+            <ImageButton
+                android:id="@+id/ranking_pre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mini_pre_view"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/ranking_play_or_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/mini_play_btn_view"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/ranking_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mini_next_view"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
 
 </LinearLayout>

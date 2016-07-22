@@ -4,21 +4,27 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.howard.mp3player.Bean.SongBySearchBean;
 import com.example.howard.mp3player.InterAPItools.GetListBySearchSong;
 import com.example.howard.mp3player.InterAPItools.GetListBySingerSong;
+import com.example.howard.mp3player.MyApplication;
 import com.example.howard.mp3player.R;
+import com.example.howard.mp3player.Service.MusicPlayerService;
 import com.example.howard.mp3player.Service.NetSongDownloadServer;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,12 +37,20 @@ public class SingerSongSearchActivity extends Activity {
     private String searchstr=null;
     private GetListBySingerSong getListBySingerSong;
     private List<SongBySearchBean> singersonglist=new ArrayList<>();
+    private MyApplication myApplication;
+    private MusicPlayerService musicPlayerService;
+    private int mypesition=-1;
+    private List<String> songidlist=new ArrayList<>();
+    private InternetSearchTab internetSearchTab;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.singer_song_search);
+        myApplication= (MyApplication) getApplication();
+        musicPlayerService=new MusicPlayerService();
+        internetSearchTab=myApplication.internetSearchTab;
         setView();
         myAdapter = new SingerSongListViewAdapter(this,singersonglist, new SingerSongListViewAdapter.Callback() {
             @Override
@@ -60,23 +74,61 @@ public class SingerSongSearchActivity extends Activity {
 
     //刷新ListView
     private void refreshListView() {
+        mypesition=-1;
         singersongBySearch.setAdapter(myAdapter);
         listener= singerresetLickListener();
         singersongBySearch.setOnItemClickListener(listener);
         myAdapter.notifyDataSetChanged();
     }
 
+    public static final int CHANG_TO_PLAY=321;
+    public static final int CHANG_TO_PAUSE=322;
+
     private AdapterView.OnItemClickListener singerresetLickListener(){
         AdapterView.OnItemClickListener songListclickListener = new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
+                Log.e("click","true");
+                Intent intent = new Intent(SingerSongSearchActivity.this,
+                        MusicPlayerService.class);
+                intent.putExtra("Activity","singer");
+                intent.putExtra("pesition", arg2);
+                musicPlayerService=myApplication.musicPlayerService;
+                if (musicPlayerService==null){
+                    mypesition=arg2;
+                    intent.putExtra("what", "play");
+                    Message message=new Message();
+                    message.what=CHANG_TO_PAUSE;
+                    internetSearchTab.interHandler.sendMessage(message);
+                }else {
+                    if (mypesition!=arg2){
+                        mypesition=arg2;
+                        intent.putExtra("what", "play");
+                        Message message=new Message();
+                        message.what=CHANG_TO_PAUSE;
+                        internetSearchTab.interHandler.sendMessage(message);
+                    }else if (mypesition==arg2&&!musicPlayerService.mediaPlayer.isPlaying()){
+                        intent.putExtra("what","restart");
+                        Message message=new Message();
+                        message.what=CHANG_TO_PAUSE;
+                        internetSearchTab.interHandler.sendMessage(message);
+                    }else {
+                        intent.putExtra("what", "pause");
+                        Message message=new Message();
+                        message.what=CHANG_TO_PLAY;
+                        internetSearchTab.interHandler.sendMessage(message);
+                    }
+                }
 
+                startService(intent);
 
             }
         };
         return songListclickListener;
     }
+
+
 
     private void setView(){
         singersearchInfo= (EditText) findViewById(R.id.singersearchText);
@@ -92,6 +144,13 @@ public class SingerSongSearchActivity extends Activity {
                singersonglist.clear();
                if (singersonglist!=null){
                    singersonglist.addAll(getListBySingerSong.singersonglist);
+                   int i;
+                   songidlist.clear();
+                   for (i=0;i<singersonglist.size();i++){
+
+                       songidlist.add(singersonglist.get(i).getSongid());
+                   }
+                   myApplication.setSongidList(songidlist);
                    Log.e("listmain", String.valueOf(singersonglist.size()));
                    refreshListView();
                }

@@ -2,15 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:background="#000000"
     tools:context="com.example.howard.mp3player.Internet.SingerSongSearchActivity">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:background="#ffffff">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -60,7 +61,10 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/singersongbysearch"
-        android:background="#ffffff" />
+        android:background="#ffffff"
+        android:layout_weight="12" />
+
+
 </LinearLayout>

@@ -2,9 +2,11 @@ package com.example.howard.mp3player;
 
 import android.app.Application;
 
+import com.example.howard.mp3player.Internet.InternetSearchTab;
 import com.example.howard.mp3player.LocalSongInfo.TabSongActivity;
 import com.example.howard.mp3player.Service.MusicPlayerService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +17,8 @@ public class MyApplication extends Application {
     public List<Map<String, Object>> mydatalist;
     public MusicPlayerService musicPlayerService=null;
     public TabSongActivity tabSongActivity;
+    public List<String> songidList =new ArrayList<>();
+    public InternetSearchTab internetSearchTab;
 //    private String url;
 
 
@@ -29,7 +33,12 @@ public class MyApplication extends Application {
     public void setTabSongActivity(TabSongActivity Activity){
         tabSongActivity=Activity;
     }
-
+    public void setInternetSearchTab(InternetSearchTab InterActivity){
+        internetSearchTab=InterActivity;
+    }
+    public void setSongidList (List<String> list){
+        songidList=list;
+    }
 //    public void preClick() throws IOException {
 //
 //        musicPlayerService.pesition=musicPlayerService.pesition-1;

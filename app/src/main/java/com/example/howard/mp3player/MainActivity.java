@@ -3,6 +3,7 @@ package com.example.howard.mp3player;
 import android.app.TabActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.Menu;
@@ -85,9 +86,6 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
                 }
             }
         });
-//        Intent intent =new Intent(MainActivity.this,SongRankingMainActivity.class);
-//        startActivity(intent);
-
     }
 
     @Override
@@ -107,24 +105,35 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
 
 
     public void preClick() throws IOException {
-        musicPlayerService=myApplication.musicPlayerService;
+        musicPlayerService = myApplication.musicPlayerService;
 
-        if (musicPlayerService!=null) {
-            musicPlayerService.pesition=musicPlayerService.pesition-1;
-            if (musicPlayerService.pesition != -1) {
-                musicPlayerService.callMedia(musicPlayerService.pesition);
-                url = musicPlayerService.url;
-                musicPlayerService.play(url);
-                changeToPause();
+        if (musicPlayerService != null) {
+            if (!musicPlayerService.ifintersong) {
+                musicPlayerService.pesition = musicPlayerService.pesition - 1;
+                if (musicPlayerService.pesition != -1) {
+                    musicPlayerService.callMedia(musicPlayerService.pesition);
+                    url = musicPlayerService.url;
+                    musicPlayerService.play(url);
+                    changeToPause();
+                } else {
+                    musicPlayerService.pesition = musicPlayerService.list.size() - 1;
+                    musicPlayerService.callMedia(musicPlayerService.pesition);
+                    url = musicPlayerService.url;
+                    musicPlayerService.play(url);
+                    changeToPause();
+                }
             } else {
-                musicPlayerService.pesition = musicPlayerService.list.size() - 1;
-                musicPlayerService.callMedia(musicPlayerService.pesition);
-                url = musicPlayerService.url;
-                musicPlayerService.play(url);
-                changeToPause();
+                musicPlayerService.pesition = musicPlayerService.pesition - 1;
+                if (musicPlayerService.pesition != -1) {
+                    musicPlayerService.callInterMedia(musicPlayerService.pesition);
+                    changeToPause();
+                } else {
+                    musicPlayerService.pesition =myApplication.songidList.size()-1;
+                    musicPlayerService.callInterMedia(musicPlayerService.pesition);
+                    changeToPause();
+                }
+
             }
-//        myApplication.preClick();
-//        changeToPause();
         }
     }
     public void playClick(){
@@ -132,49 +141,52 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
         if(musicPlayerService!=null){
             if(musicPlayerService.mediaPlayer.isPlaying()) {
                 musicPlayerService.pause();
-//                play.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.mini_play));
+                play.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.mini_play));
                 changeToPlay();
             }else {
 
                 musicPlayerService.restart();
-//                play.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.mini_pause));
+                play.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.mini_pause));
                 changeToPause();
             }
         }
-//        myApplication.playClick();
-//        if (myApplication.musicPlayerService.mediaPlayer.isPlaying()){
-//            changeToPause();
-//        }else {
-//            changeToPlay();
-//        }
     }
 
     public void nextClick() throws IOException {
-        musicPlayerService=myApplication.musicPlayerService;
-
-        if (musicPlayerService!=null) {
-            musicPlayerService.pesition=musicPlayerService.pesition+1;
-            if (musicPlayerService.pesition != musicPlayerService.list.size()) {
-                musicPlayerService.callMedia(musicPlayerService.pesition);
-                url = musicPlayerService.url;
-                musicPlayerService.play(url);
-                changeToPause();
+        musicPlayerService = myApplication.musicPlayerService;
+        if (musicPlayerService != null) {
+            if (!musicPlayerService.ifintersong) {
+                musicPlayerService.pesition = musicPlayerService.pesition + 1;
+                if (musicPlayerService.pesition != musicPlayerService.list.size()) {
+                    musicPlayerService.callMedia(musicPlayerService.pesition);
+                    url = musicPlayerService.url;
+                    musicPlayerService.play(url);
+                    changeToPause();
+                } else {
+                    musicPlayerService.pesition = 0;
+                    musicPlayerService.callMedia(musicPlayerService.pesition);
+                    url = musicPlayerService.url;
+                    musicPlayerService.play(url);
+                    changeToPause();
+                }
             } else {
-                musicPlayerService.pesition = 0;
-                musicPlayerService.callMedia(musicPlayerService.pesition);
-                url = musicPlayerService.url;
-                musicPlayerService.play(url);
-                changeToPause();
+                musicPlayerService.pesition = musicPlayerService.pesition + 1;
+                if (musicPlayerService.pesition != myApplication.songidList.size()) {
+                    musicPlayerService.callInterMedia(musicPlayerService.pesition);
+                    changeToPause();
+                } else {
+                    musicPlayerService.pesition = 0;
+                    musicPlayerService.callInterMedia(musicPlayerService.pesition);
+                    changeToPause();
+                }
             }
-//        myApplication.nextClick();
-//        changeToPause();
         }
     }
     public void changeToPlay(){
-//        play.setBackground(this.getResources().getDrawable(R.drawable.mini_play));
+        play.setBackground(this.getResources().getDrawable(R.drawable.mini_play));
     }
     public void changeToPause(){
-//        play.setBackground(this.getResources().getDrawable(R.drawable.mini_pause));
+        play.setBackground(this.getResources().getDrawable(R.drawable.mini_pause));
     }
     public void setView(){
         radioGroup= (RadioGroup) findViewById(R.id.radiogroup);
