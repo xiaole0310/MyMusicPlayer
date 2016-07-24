@@ -36,15 +36,17 @@ public class TabSongActivity extends TabActivity implements RadioGroup.OnChecked
     public ImageButton pre;
     public ImageButton next;
     public ImageButton song;
-//    public TextView song_name;
-//    public TextView singer_name;
-    private LinearLayout tab_mini;
+    public TextView song_name;
+    public TextView singer_name;
+    public LinearLayout tab_mini;
     private MyApplication myApplication;
     private MusicPlayerService musicPlayerService;
     private String url;
     public MyHandler myHandler;
     private final static int CHANGE_TO_PLAY = 111;
     private final static int CHANG_TO_PAUSE=112;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +120,14 @@ public class TabSongActivity extends TabActivity implements RadioGroup.OnChecked
                 changeToPause();
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        myApplication.setTabSongActivity(this);
+        song_name.setText(myApplication.songname);
+        singer_name.setText(myApplication.singername);
     }
 
     public void preClick() throws IOException {
@@ -213,10 +223,9 @@ public class TabSongActivity extends TabActivity implements RadioGroup.OnChecked
         play= (ImageButton) findViewById(R.id.play_or_pause);
         next= (ImageButton) findViewById(R.id.next);
         song= (ImageButton) findViewById(R.id.mini_image);
+        song_name= (TextView) findViewById(R.id.song_name);
+        singer_name= (TextView) findViewById(R.id.singer_name);
         tab_mini= (LinearLayout) findViewById(R.id.song);
-//        song_name= (TextView) findViewById(R.id.song_name);
-//        singer_name= (TextView) findViewById(R.id.singer_name);
-
     }
 
     @Override

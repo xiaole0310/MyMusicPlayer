@@ -3,6 +3,8 @@ package com.example.howard.mp3player;
 import android.app.Application;
 
 import com.example.howard.mp3player.Internet.InternetSearchTab;
+import com.example.howard.mp3player.Internet.SongRankingListActivity;
+import com.example.howard.mp3player.Internet.SongRankingMainActivity;
 import com.example.howard.mp3player.LocalSongInfo.PlayActivity;
 import com.example.howard.mp3player.LocalSongInfo.TabSongActivity;
 import com.example.howard.mp3player.Service.MusicPlayerService;
@@ -16,13 +18,18 @@ import java.util.Map;
  */
 public class MyApplication extends Application {
     public List<Map<String, Object>> mydatalist;
-    public MusicPlayerService musicPlayerService=null;
-    public TabSongActivity tabSongActivity;
     public List<String> songidList =new ArrayList<>();
+    public MusicPlayerService musicPlayerService=null;
+    public MainActivity mainActivity;
+    public TabSongActivity tabSongActivity;
+    public SongRankingMainActivity songRankingMainActivity;
+    public SongRankingListActivity songRankingListActivity;
     public InternetSearchTab internetSearchTab;
+    public String activityname="mainactivity";
     public PlayActivity playActivity;
+    public String songname="未播放";
+    public String singername="未播放";
 
-//    private String url;
 
 
 
@@ -33,11 +40,25 @@ public class MyApplication extends Application {
     public void setMusicPlayerService (MusicPlayerService service){
         musicPlayerService=service;
     }
+    public void setMainActivity(MainActivity activity){
+        mainActivity=activity;
+        activityname="mainactivity";
+    }
     public void setTabSongActivity(TabSongActivity Activity){
         tabSongActivity=Activity;
+        activityname="tabsongactivity";
+    }
+    public void setSongRankingMainActivity(SongRankingMainActivity activity){
+        songRankingMainActivity=activity;
+        activityname="songrankingmainactivity";
+    }
+    public void setSongRankingListActivity(SongRankingListActivity activity){
+        songRankingListActivity=activity;
+        activityname="songrankinglistactivity";
     }
     public void setInternetSearchTab(InternetSearchTab InterActivity){
         internetSearchTab=InterActivity;
+        activityname="internetsearchtab";
     }
     public void setSongidList (List<String> list){
         songidList=list;
@@ -45,48 +66,31 @@ public class MyApplication extends Application {
     public void setPlayActivity(PlayActivity activity){
         playActivity=activity;
     }
-//    public void preClick() throws IOException {
-//
-//        musicPlayerService.pesition=musicPlayerService.pesition-1;
-//
-//        if(musicPlayerService.pesition!=-1){
-//            musicPlayerService.callMedia(musicPlayerService.pesition);
-//            url=musicPlayerService.url;
-//            musicPlayerService.play(url);
-//        }else {
-//            musicPlayerService.pesition=musicPlayerService.songbysearchlist.size()-1;
-//            musicPlayerService.callMedia(musicPlayerService.pesition);
-//            url=musicPlayerService.url;
-//            musicPlayerService.play(url);
-//        }
-//    }
-//    public void playClick(){
-//        if(musicPlayerService!=null){
-//            if(musicPlayerService.mediaPlayer.isPlaying()) {
-//                musicPlayerService.pause();
-////                play.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.mini_play));
-//            }else {
-//
-//                musicPlayerService.restart();
-////                play.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.mini_pause));
-//            }
-//        }
-//    }
-//
-//    public void nextClick() throws IOException {
-//        musicPlayerService.pesition=musicPlayerService.pesition+1;
-//        if(musicPlayerService.pesition!=musicPlayerService.songbysearchlist.size()){
-//            musicPlayerService.callMedia(musicPlayerService.pesition);
-//            url=musicPlayerService.url;
-//            musicPlayerService.play(url);
-//        }else {
-//            musicPlayerService.pesition=0;
-//            musicPlayerService.callMedia(musicPlayerService.pesition);
-//            url=musicPlayerService.url;
-//            musicPlayerService.play(url);
-//        }
-//    }
 
+    public void setsongname(String name){
+        songname=name;
+    }
+    public void setsingername(String name){
+        singername=name;
+    }
+    public void setmininame(){
+        if (activityname.equals("mainactivity")){
+            mainActivity.song_name.setText(songname);
+            mainActivity.singer_name.setText(singername);
+        }else if (activityname.equals("tabsongactivity")){
+            tabSongActivity.song_name.setText(songname);
+            tabSongActivity.singer_name.setText(singername);
+        }else if (activityname.equals("songrankingmainactivity")){
+            songRankingMainActivity.song_name.setText(songname);
+            songRankingMainActivity.singer_name.setText(singername);
+        }else if (activityname.equals("songrankinglistactivity")){
+            songRankingListActivity.song_name.setText(songname);
+            songRankingListActivity.singer_name.setText(singername);
+        }else if (activityname.equals("internetsearchtab")){
+           internetSearchTab.song_name.setText(songname);
+            internetSearchTab.singer_name.setText(singername);
+        }
+    }
 }
 
 

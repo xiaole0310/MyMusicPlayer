@@ -49,8 +49,8 @@ public class SongRankingMainActivity extends Activity implements RecyclerViewAda
     public ImageButton pre;
     public ImageButton next;
     public ImageButton song;
-//    public TextView song_name;
-//    public TextView singer_name;
+    public TextView song_name;
+    public TextView singer_name;
     private LinearLayout ranking_mini;
     private MyApplication myApplication;
     private MusicPlayerService musicPlayerService;
@@ -66,9 +66,9 @@ public class SongRankingMainActivity extends Activity implements RecyclerViewAda
         play= (ImageButton) findViewById(R.id.ranking_play_or_pause);
         next= (ImageButton) findViewById(R.id.ranking_next);
         song= (ImageButton) findViewById(R.id.ranking_mini_image);
-        ranking_mini = (LinearLayout) findViewById(R.id.ranking_song);
-//        song_name= (TextView) findViewById(R.id.ranking_song_name);
-//        singer_name= (TextView) findViewById(R.id.ranking_singer_name);
+        song_name= (TextView) findViewById(R.id.ranking_song_name);
+        singer_name= (TextView) findViewById(R.id.ranking_singer_name);
+        ranking_mini= (LinearLayout) findViewById(R.id.ranking_song);
         myApplication= (MyApplication) getApplication();
         musicPlayerService=new MusicPlayerService();
         rankingTitleBeen=new RankingTitleBean();
@@ -122,8 +122,11 @@ public class SongRankingMainActivity extends Activity implements RecyclerViewAda
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
+        myApplication.setSongRankingMainActivity(this);
+        song_name.setText(myApplication.songname);
+        singer_name.setText(myApplication.singername);
         musicPlayerService = myApplication.musicPlayerService;
         if (musicPlayerService!=null&&musicPlayerService.mediaPlayer!=null){
             if (musicPlayerService.mediaPlayer.isPlaying()){

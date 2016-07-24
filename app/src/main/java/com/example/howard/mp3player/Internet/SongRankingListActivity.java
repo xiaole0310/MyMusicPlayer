@@ -63,9 +63,9 @@ public class SongRankingListActivity extends Activity {
     public ImageButton pre;
     public ImageButton next;
     public ImageButton song;
-//    public TextView song_name;
-//    public TextView singer_name;
-    private LinearLayout list_mini;
+    public TextView song_name;
+    public TextView singer_name;
+    public LinearLayout list_mini;
     private MyApplication myApplication;
     private MusicPlayerService musicPlayerService;
     private String url;
@@ -87,9 +87,9 @@ public class SongRankingListActivity extends Activity {
         play= (ImageButton) findViewById(R.id.ranking_list_play_or_pause);
         next= (ImageButton) findViewById(R.id.ranking_list_next);
         song= (ImageButton) findViewById(R.id.ranking_list_mini_image);
+        song_name= (TextView) findViewById(R.id.ranking_list_song_name);
+        singer_name= (TextView) findViewById(R.id.ranking_list_singer_name);
         list_mini= (LinearLayout) findViewById(R.id.ranking_list_song);
-//        song_name= (TextView) findViewById(R.id.ranking_list_song_name);
-//        singer_name= (TextView) findViewById(R.id.ranking_list_singer_name);
         myAdapter = new MyAdapter(this);
         rankingsonglist.setAdapter(myAdapter);
 
@@ -149,8 +149,11 @@ public class SongRankingListActivity extends Activity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
+        myApplication.setSongRankingListActivity(this);
+        song_name.setText(myApplication.songname);
+        singer_name.setText(myApplication.singername);
     }
 
     private void getRankingInfo(int num){

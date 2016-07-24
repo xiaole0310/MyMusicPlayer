@@ -134,22 +134,30 @@
         <LinearLayout
             android:id="@+id/inter_search_song"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:clickable="true"
             android:layout_toLeftOf="@+id/inter_search_button"
-            android:layout_weight="8"
-            android:layout_gravity="center">
+            android:layout_weight="8">
 
 
             <TextView
+                android:id="@+id/inter_search_song_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="小7音乐盒"
-                android:id="@+id/textView"
-                android:layout_gravity="center"
-                android:textSize="30dp" />
+                android:layout_marginTop="5dp"
+                android:text="未命名"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/inter_search_singer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="未命名"
+                android:textColor="@android:color/white" />
+
         </LinearLayout>
 
         <LinearLayout

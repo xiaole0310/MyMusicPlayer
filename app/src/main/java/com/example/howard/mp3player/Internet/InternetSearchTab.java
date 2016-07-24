@@ -36,9 +36,9 @@ public class InternetSearchTab extends TabActivity implements RadioGroup.OnCheck
     public ImageButton pre;
     public ImageButton next;
     public ImageButton song;
-//    public TextView song_name;
-//    public TextView singer_name;
-    private LinearLayout inter_mini;
+    public TextView song_name;
+    public TextView singer_name;
+    public LinearLayout inter_mini;
     private MyApplication myApplication;
     private MusicPlayerService musicPlayerService;
     private String url;
@@ -111,6 +111,14 @@ public class InternetSearchTab extends TabActivity implements RadioGroup.OnCheck
         myApplication.setInternetSearchTab(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        myApplication.setInternetSearchTab(this);
+        song_name.setText(myApplication.songname);
+        singer_name.setText(myApplication.singername);
+    }
+
     public void setView(){
         radioGroup= (RadioGroup) findViewById(R.id.search_radiogroup);
         radioButtonbysong= (RadioButton) findViewById(R.id.radioButtonbysong);
@@ -119,9 +127,9 @@ public class InternetSearchTab extends TabActivity implements RadioGroup.OnCheck
         play= (ImageButton) findViewById(R.id.inter_search_play_or_pause);
         next= (ImageButton) findViewById(R.id.inter_search_next);
         song= (ImageButton) findViewById(R.id.inter_search_mini_image);
+        song_name= (TextView) findViewById(R.id.inter_search_song_name);
+        singer_name= (TextView) findViewById(R.id.inter_search_singer_name);
         inter_mini= (LinearLayout) findViewById(R.id.inter_search_song);
-//        song_name= (TextView) findViewById(R.id.inter_search_song_name);
-//        singer_name= (TextView) findViewById(R.id.inter_search_singer_name);
     }
 
     public void preClick() throws IOException {

@@ -63,11 +63,15 @@ public  class  SongInfoLocal extends Activity  {
 
     //刷新ListView
     private void refreshListView() {
-
+        musicPlayerService=myApplication.musicPlayerService;
+        if (musicPlayerService!=null){
+            musicPlayerService.pesition=-1;
+        }
         myAdapter = new MyAdapter(this);
         listView.setAdapter(myAdapter);
         listener= resetLickListener();
         listView.setOnItemClickListener(listener);
+
     }
 
     BroadcastReceiver receiver = new BroadcastReceiver() {

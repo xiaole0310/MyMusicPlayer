@@ -58,6 +58,8 @@ public class MusicPlayerService extends Service implements MediaPlayer.OnBufferi
     public boolean ifintersong=false;
     public boolean isPlayActivity=false;
     public PlayActivity playActivity;
+    private String songname;
+    private String singername;
 
 
     @Override
@@ -219,6 +221,8 @@ public class MusicPlayerService extends Service implements MediaPlayer.OnBufferi
     }
     public void callMedia(int pesition){
         url = list.get(pesition).get("URL").toString();
+        songname=list.get(pesition).get("TITLE").toString();
+        singername=list.get(pesition).get("SINGER").toString();
     }
     //响应网络歌曲在线播放
     public void callInterMedia(int pesition){
@@ -234,6 +238,8 @@ public class MusicPlayerService extends Service implements MediaPlayer.OnBufferi
                     PlayBean bean=response.body();
                     playBean=new PlayBean();
                     playBean=bean;
+                    songname=playBean.getSonginfo().getTitle();
+                    singername=playBean.getSonginfo().getAuthor();
                     url=playBean.getBitrate().getShow_link();
                     if (url.equals("")){
                         url=playBean.getBitrate().getFile_link();
@@ -517,6 +523,9 @@ public class MusicPlayerService extends Service implements MediaPlayer.OnBufferi
 
             mediaPlayer.setLooping(true);
             mediaPlayer.start();
+            myApplication.setsongname(songname);
+            myApplication.setsingername(singername);
+            myApplication.setmininame();
         }else {
             mediaPlayer.reset();
 
@@ -536,6 +545,10 @@ public class MusicPlayerService extends Service implements MediaPlayer.OnBufferi
                         message.what=CHANGE_TIMEEND;
                         playActivity.myHandler.sendMessage(message);
                         isPlayActivity=false;
+                    }else {
+                        myApplication.setsongname(songname);
+                        myApplication.setsingername(singername);
+                        myApplication.setmininame();
                     }
 
 
