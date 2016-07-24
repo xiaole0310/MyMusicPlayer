@@ -83,7 +83,10 @@ public class SongSearchActivity extends Activity {
 
     //刷新ListView
     private void refreshListView() {
-        mypesition=-1;
+        musicPlayerService=myApplication.musicPlayerService;
+        if (musicPlayerService!=null){
+            musicPlayerService.pesition=-1;
+        }
         songBySearch.setAdapter(myAdapter);
         songBySearch.setItemsCanFocus(false);
         listener= resetLickListener();

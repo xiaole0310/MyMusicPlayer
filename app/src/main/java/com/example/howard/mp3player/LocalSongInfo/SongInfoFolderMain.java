@@ -134,7 +134,11 @@ public class SongInfoFolderMain extends Activity implements AdapterView.OnItemCl
                                     long arg3) {
                 String folderpath=folderPath.get(arg2);
                 showFolderSong(folderpath);
-                mypesition=-1;
+                musicPlayerService=myApplication.musicPlayerService;
+                if (musicPlayerService!=null){
+                    musicPlayerService.pesition=-1;
+                }
+//                mypesition=-1;
             }
         };
         return songListclickListener;

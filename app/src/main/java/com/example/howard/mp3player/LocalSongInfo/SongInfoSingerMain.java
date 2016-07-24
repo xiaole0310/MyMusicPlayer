@@ -123,7 +123,11 @@ public class SongInfoSingerMain extends Activity implements AdapterView.OnItemCl
                                     long arg3) {
                 String singername=singernameliststr.get(arg2);
                 showSingersong(singername);
-                mypesition=-1;
+                musicPlayerService=myApplication.musicPlayerService;
+                if (musicPlayerService!=null){
+                    musicPlayerService.pesition=-1;
+                }
+//                mypesition=-1;
 //                Intent intent = new Intent(SongInfoSingerMain.this,
 //                        SongInfoSinger.class);
 //                intent.putExtra("SingerName",singername);
