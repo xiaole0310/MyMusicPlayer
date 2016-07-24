@@ -25,6 +25,7 @@ import com.example.howard.mp3player.Bean.RankingTitleBean;
 import com.example.howard.mp3player.Bean.SongRankingBean;
 import com.example.howard.mp3player.InterAPItools.ImageUtils;
 import com.example.howard.mp3player.InterAPItools.Injection;
+import com.example.howard.mp3player.LocalSongInfo.PlayActivity;
 import com.example.howard.mp3player.MyApplication;
 import com.example.howard.mp3player.R;
 import com.example.howard.mp3player.Service.MusicPlayerService;
@@ -75,6 +76,13 @@ public class SongRankingMainActivity extends Activity implements RecyclerViewAda
         setRecyclerViewAdapter();
         getRankingInfo();
         recyclerViewAdapter.notifyDataSetChanged();
+        song.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SongRankingMainActivity.this,PlayActivity.class);
+                startActivity(intent);
+            }
+        });
         pre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

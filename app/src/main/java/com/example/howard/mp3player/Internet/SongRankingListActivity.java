@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.example.howard.mp3player.Bean.SongRankingBean;
 import com.example.howard.mp3player.InterAPItools.ImageUtils;
 import com.example.howard.mp3player.InterAPItools.Injection;
+import com.example.howard.mp3player.LocalSongInfo.PlayActivity;
 import com.example.howard.mp3player.MyApplication;
 import com.example.howard.mp3player.R;
 import com.example.howard.mp3player.Service.MusicPlayerService;
@@ -96,6 +97,13 @@ public class SongRankingListActivity extends Activity {
 
         //加载网络信息
         getRankingInfo(rankingnum);
+        song.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SongRankingListActivity.this,PlayActivity.class);
+                startActivity(intent);
+            }
+        });
         pre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -304,10 +312,11 @@ public class SongRankingListActivity extends Activity {
                 intent.putExtra("pesition", arg2);
                 musicPlayerService=myApplication.musicPlayerService;
                 if (musicPlayerService==null){
-                    mypesition=arg2;
+//                    mypesition=arg2;
                     intent.putExtra("what", "play");
                     changeToPause();
                 }else {
+                    mypesition=musicPlayerService.pesition;
                     if (mypesition!=arg2){
                         mypesition=arg2;
                         intent.putExtra("what", "play");

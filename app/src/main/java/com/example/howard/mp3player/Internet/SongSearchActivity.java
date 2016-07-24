@@ -106,13 +106,14 @@ public class SongSearchActivity extends Activity {
                 intent.putExtra("Activity","search");
                 intent.putExtra("pesition", arg2);
                 musicPlayerService=myApplication.musicPlayerService;
+                internetSearchTab=myApplication.internetSearchTab;
                 if (musicPlayerService==null){
-                    mypesition=arg2;
                     intent.putExtra("what", "play");
                     Message message=new Message();
                     message.what=CHANG_TO_PAUSE;
                     internetSearchTab.interHandler.sendMessage(message);
                 }else {
+                    mypesition=musicPlayerService.pesition;
                     if (mypesition!=arg2){
                         mypesition=arg2;
                         intent.putExtra("what", "play");

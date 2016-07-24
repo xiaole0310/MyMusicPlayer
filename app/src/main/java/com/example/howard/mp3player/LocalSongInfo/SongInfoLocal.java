@@ -94,42 +94,21 @@ public  class  SongInfoLocal extends Activity  {
                         MusicPlayerService.class);
                 intent.putExtra("Activity","Local");
                 intent.putExtra("pesition", arg2);
-
-                if (mypesition != arg2) {
+                if (musicPlayerService==null){
                     intent.putExtra("what", "play");
-//                    play_state = 1;
-                    mypesition = arg2;
-                } else if (mypesition == arg2 &&musicPlayerService.mediaPlayer.isPlaying()) {
-                    intent.putExtra("what", "pause");
-//                    play_state = 0;
-                } else if (mypesition == arg2 &&!musicPlayerService.mediaPlayer.isPlaying()) {
-                    intent.putExtra("what", "restart");
-//                    play_state = 1;
+                }else {
+                    mypesition=musicPlayerService.pesition;
+                    if (mypesition != arg2) {
+                        intent.putExtra("what", "play");
+                    } else if (mypesition == arg2 &&musicPlayerService.mediaPlayer.isPlaying()) {
+                        intent.putExtra("what", "pause");
+                    } else if (mypesition == arg2 &&!musicPlayerService.mediaPlayer.isPlaying()) {
+                        intent.putExtra("what", "restart");
+                    }
                 }
+
                 myApplication.setMydatalist(localdatalist);
-//                musicPlayerService.setList(localdatalist);
                 startService(intent);
-//                if (myApplication.musicPlayerService!=null) {
-//                    myApplication.setMusicPlayerService(musicPlayerService);
-//                }else {
-//                    musicPlayerService=myApplication.musicPlayerService;
-//                }
-
-
-//                if (view == null) {
-//                    view = arg1;
-////                    imageView = (ImageView) view.findViewById(R.id.isplay);
-//                    imageView.setVisibility(View.VISIBLE);
-//                } else {
-////                    imageView = (ImageView) view.findViewById(R.id.isplay);
-//                    imageView.setVisibility(View.GONE);
-//
-//                    imageView = (ImageView) arg1.findViewById(R.id.isplay);
-//                    imageView.setVisibility(View.VISIBLE);
-//
-//                    view = arg1;
-//
-//                }
             }
         };
         return songListclickListener;

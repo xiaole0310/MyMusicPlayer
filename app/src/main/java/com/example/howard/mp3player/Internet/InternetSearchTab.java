@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.example.howard.mp3player.LocalSongInfo.PlayActivity;
 import com.example.howard.mp3player.LocalSongInfo.SongInfoFolderMain;
 import com.example.howard.mp3player.LocalSongInfo.SongInfoLocal;
 import com.example.howard.mp3player.LocalSongInfo.SongInfoSingerMain;
@@ -59,6 +60,13 @@ public class InternetSearchTab extends TabActivity implements RadioGroup.OnCheck
                 .setContent(new Intent(InternetSearchTab.this,SingerSongSearchActivity.class)));
         tabHost.setCurrentTab(0);
         radioGroup.setOnCheckedChangeListener(this);
+        song.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(InternetSearchTab.this,PlayActivity.class);
+                startActivity(intent);
+            }
+        });
         pre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -27,7 +27,8 @@ import java.io.IOException;
 public class PlayActivity extends Activity implements View.OnClickListener{
 
     private final static int CHANGE_TIMESTART = 1;
-    private MyHandler myHandler;
+    private final static int CHANGE_TIMEEND=2;
+    public MyHandler myHandler;
     //音乐文件的目录
 //    private static final String PATH = Environment.getExternalStorageDirectory() + "/Music/";
 
@@ -70,6 +71,7 @@ public class PlayActivity extends Activity implements View.OnClickListener{
         this.setContentView(R.layout.playview);
         myApplication= (MyApplication) getApplication();
         musicPlayerService=myApplication.musicPlayerService;
+        myApplication.setPlayActivity(this);
 
         //初始化
         seekBar = (SeekBar) findViewById(R.id.seekBar);
@@ -173,25 +175,44 @@ public class PlayActivity extends Activity implements View.OnClickListener{
     private void pre() throws IOException {
         musicPlayerService = myApplication.musicPlayerService;
         if (musicPlayerService!=null) {
-//            musicPlayerService.mediaPlayer.pause();
-//            changSeekBar(false);
-//            musicPlayerService.mediaPlayer.release();
-//            SystemClock.sleep(500);
+            musicPlayerService.isPlayActivity=true;
             int arg2=musicPlayerService.pesition-1;
-            Intent intent = new Intent(PlayActivity.this,
-                    MusicPlayerService.class);
-            intent.putExtra("Activity","pre");
-            intent.putExtra("pesition", arg2);
-//            musicPlayerService.pesition = musicPlayerService.pesition - 1;
-            startService(intent);
-            changeToPause();
-//            thread.run();
-//            changSeekBar(true);
+            if (!musicPlayerService.ifintersong){
+                if (arg2!=-1){
+                    Intent intent = new Intent(PlayActivity.this,
+                            MusicPlayerService.class);
+                    intent.putExtra("Activity","pre");
+                    intent.putExtra("pesition", arg2);
+                    startService(intent);
+                    changeToPause();
+                }else {
+                    Intent intent = new Intent(PlayActivity.this,
+                            MusicPlayerService.class);
+                    intent.putExtra("Activity","pre");
+                    intent.putExtra("pesition",myApplication.mydatalist.size()-1);
+                    startService(intent);
+                    changeToPause();
+                }
+
+            }else {
+                if (arg2!=-1){
+                    Intent intent = new Intent(PlayActivity.this,
+                            MusicPlayerService.class);
+                    intent.putExtra("Activity","pre");
+                    intent.putExtra("pesition", arg2);
+                    startService(intent);
+                    changeToPause();
+                }else {
+                    Intent intent = new Intent(PlayActivity.this,
+                            MusicPlayerService.class);
+                    intent.putExtra("Activity","pre");
+                    intent.putExtra("pesition",myApplication.songidList.size()-1);
+                    startService(intent);
+                    changeToPause();
+                }
+            }
+
         }
-//        myApplication.musicPlayerService.mediaPlayer.pause();
-//        SystemClock.sleep(1000);
-//        myApplication.preClick();
-//        changeToPause();
     }
 
 
@@ -224,32 +245,53 @@ public class PlayActivity extends Activity implements View.OnClickListener{
     private void next() throws IOException {
         musicPlayerService=myApplication.musicPlayerService;
         if (musicPlayerService!=null) {
-//            musicPlayerService.mediaPlayer.pause();
-//            SystemClock.sleep(300);
-//            thread.interrupt();
-//            changSeekBar(false);
-//            musicPlayerService.mediaPlayer.release();
+            musicPlayerService.isPlayActivity=true;
             int arg2=musicPlayerService.pesition+1;
-            Intent intent = new Intent(PlayActivity.this,
-                    MusicPlayerService.class);
-            intent.putExtra("Activity","next");
-            intent.putExtra("pesition", arg2);
-//            musicPlayerService.pesition = musicPlayerService.pesition - 1;
-            startService(intent);
-            changeToPause();
+            if (!musicPlayerService.ifintersong){
+                if (arg2!=myApplication.mydatalist.size()){
+                    Intent intent = new Intent(PlayActivity.this,
+                            MusicPlayerService.class);
+                    intent.putExtra("Activity","next");
+                    intent.putExtra("pesition", arg2);
+                    startService(intent);
+                    changeToPause();
+                }else {
+                    Intent intent = new Intent(PlayActivity.this,
+                            MusicPlayerService.class);
+                    intent.putExtra("Activity","next");
+                    intent.putExtra("pesition",0);
+                    startService(intent);
+                    changeToPause();
+                }
+            }else {
+                if (arg2!=myApplication.songidList.size()){
+                    Intent intent = new Intent(PlayActivity.this,
+                            MusicPlayerService.class);
+                    intent.putExtra("Activity","next");
+                    intent.putExtra("pesition", arg2);
+                    startService(intent);
+                    changeToPause();
+                }else {
+                    Intent intent = new Intent(PlayActivity.this,
+                            MusicPlayerService.class);
+                    intent.putExtra("Activity","next");
+                    intent.putExtra("pesition",0);
+                    startService(intent);
+                    changeToPause();
+                }
+            }
 
 
-//            thread.run();
-//            changSeekBar(true);
 
         }
-//        myApplication.musicPlayerService.mediaPlayer.pause();
-//        SystemClock.sleep(1000);
-//        myApplication.nextClick();
-//        changeToPause();
 
     }
 
+    public void changeTimeend(){
+        int inttimeend = musicPlayerService.getgetDuration();
+        String timeendstr = timeToString(inttimeend);
+        timeend.setText(timeendstr);
+    }
 
     private void changSeekBar(){
         int inttimeend = musicPlayerService.getgetDuration();
@@ -401,7 +443,7 @@ public class PlayActivity extends Activity implements View.OnClickListener{
         timestring=min+":"+sec;
         return timestring;
     }
-    private class MyHandler extends Handler {
+    public class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg){
         switch (msg.what)
@@ -411,7 +453,9 @@ public class PlayActivity extends Activity implements View.OnClickListener{
                 String timestartstr=timeToString(inttimestart);
                 timestart.setText(timestartstr);
                 break;
-
+            case CHANGE_TIMEEND:
+                changeTimeend();
+                break;
 
         }
         }

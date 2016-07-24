@@ -150,17 +150,21 @@ public class SongInfoFolderMain extends Activity implements AdapterView.OnItemCl
                         MusicPlayerService.class);
                 intent.putExtra("Activity","Folder");
                 intent.putExtra("pesition", arg2);
-
-                if (mypesition != arg2) {
+                if (musicPlayerService==null){
                     intent.putExtra("what", "play");
+                }else {
+                    mypesition=musicPlayerService.pesition;
+                    if (mypesition != arg2) {
+                        intent.putExtra("what", "play");
 //                    play_state = 1;
-                    mypesition = arg2;
-                } else if (mypesition == arg2 && musicPlayerService.mediaPlayer.isPlaying()) {
-                    intent.putExtra("what", "pause");
+//                    mypesition = arg2;
+                    } else if (mypesition == arg2 && musicPlayerService.mediaPlayer.isPlaying()) {
+                        intent.putExtra("what", "pause");
 //                    play_state = 0;
-                } else if (mypesition == arg2 && !musicPlayerService.mediaPlayer.isPlaying()) {
-                    intent.putExtra("what", "restart");
+                    } else if (mypesition == arg2 && !musicPlayerService.mediaPlayer.isPlaying()) {
+                        intent.putExtra("what", "restart");
 //                    play_state = 1;
+                    }
                 }
                 myApplication.setMydatalist(foldersonglist);
                 startService(intent);

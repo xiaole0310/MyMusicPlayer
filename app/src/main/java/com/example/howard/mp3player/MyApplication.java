@@ -3,6 +3,7 @@ package com.example.howard.mp3player;
 import android.app.Application;
 
 import com.example.howard.mp3player.Internet.InternetSearchTab;
+import com.example.howard.mp3player.LocalSongInfo.PlayActivity;
 import com.example.howard.mp3player.LocalSongInfo.TabSongActivity;
 import com.example.howard.mp3player.Service.MusicPlayerService;
 
@@ -19,6 +20,8 @@ public class MyApplication extends Application {
     public TabSongActivity tabSongActivity;
     public List<String> songidList =new ArrayList<>();
     public InternetSearchTab internetSearchTab;
+    public PlayActivity playActivity;
+
 //    private String url;
 
 
@@ -38,6 +41,9 @@ public class MyApplication extends Application {
     }
     public void setSongidList (List<String> list){
         songidList=list;
+    }
+    public void setPlayActivity(PlayActivity activity){
+        playActivity=activity;
     }
 //    public void preClick() throws IOException {
 //

@@ -15,6 +15,7 @@ import android.util.Log;
 import com.example.howard.mp3player.Bean.PlayBean;
 import com.example.howard.mp3player.Bean.SingerSongBean;
 import com.example.howard.mp3player.InterAPItools.Injection;
+import com.example.howard.mp3player.LocalSongInfo.PlayActivity;
 import com.example.howard.mp3player.MyApplication;
 import com.example.howard.mp3player.LocalSongInfo.SongInfoLocal;
 import com.example.howard.mp3player.LocalSongInfo.TabSongActivity;
@@ -50,10 +51,13 @@ public class MusicPlayerService extends Service implements MediaPlayer.OnBufferi
     private final static int CHANGE_TO_PLAY = 111;
     private final static int CHANG_TO_PAUSE=112;
     private final static int PLAY_URL= 211;
+    private final static int CHANGE_TIMEEND=2;
     private String what;
     private PlayBean playBean;
     private Map<String,Object> intersongmap=null;
     public boolean ifintersong=false;
+    public boolean isPlayActivity=false;
+    public PlayActivity playActivity;
 
 
     @Override
@@ -526,18 +530,18 @@ public class MusicPlayerService extends Service implements MediaPlayer.OnBufferi
                 @Override
                 public void onPrepared(MediaPlayer arg0) {
                     mediaPlayer.start();
+                    if (isPlayActivity){
+                        playActivity=myApplication.playActivity;
+                        Message message=new Message();
+                        message.what=CHANGE_TIMEEND;
+                        playActivity.myHandler.sendMessage(message);
+                        isPlayActivity=false;
+                    }
+
 
                 }
             });
 
-//            try {
-//                mediaPlayer.prepare();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
-//            mediaPlayer.setLooping(true);
-//            mediaPlayer.start();
         }
     }
 
