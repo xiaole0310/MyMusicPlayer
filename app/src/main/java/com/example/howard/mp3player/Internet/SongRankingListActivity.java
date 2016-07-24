@@ -151,6 +151,10 @@ public class SongRankingListActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        musicPlayerService=myApplication.musicPlayerService;
+        if (musicPlayerService!=null){
+            musicPlayerService.pesition=-1;
+        }
         myApplication.setSongRankingListActivity(this);
         song_name.setText(myApplication.songname);
         singer_name.setText(myApplication.singername);
