@@ -34,8 +34,9 @@
         <activity android:name=".Internet.SongRankingMainActivity" />
         <activity android:name=".Internet.SongRankingListActivity" />
         <activity android:name=".Internet.SongSearchActivity" />
-        <activity android:name=".Internet.SingerSongSearchActivity" />
-        <activity android:name=".Internet.InternetSearchTab"></activity>
+        <activity android:name=".Internet.SingerSongSearchActivity"/>
+        <activity android:name=".Internet.InternetSearchTab"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
     </application>
 
 </manifest>

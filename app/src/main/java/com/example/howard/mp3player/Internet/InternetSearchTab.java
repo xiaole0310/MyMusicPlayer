@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TabHost;
@@ -35,8 +36,9 @@ public class InternetSearchTab extends TabActivity implements RadioGroup.OnCheck
     public ImageButton pre;
     public ImageButton next;
     public ImageButton song;
-    public TextView song_name;
-    public TextView singer_name;
+//    public TextView song_name;
+//    public TextView singer_name;
+    private LinearLayout inter_mini;
     private MyApplication myApplication;
     private MusicPlayerService musicPlayerService;
     private String url;
@@ -61,6 +63,13 @@ public class InternetSearchTab extends TabActivity implements RadioGroup.OnCheck
         tabHost.setCurrentTab(0);
         radioGroup.setOnCheckedChangeListener(this);
         song.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(InternetSearchTab.this,PlayActivity.class);
+                startActivity(intent);
+            }
+        });
+        inter_mini.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(InternetSearchTab.this,PlayActivity.class);
@@ -110,8 +119,9 @@ public class InternetSearchTab extends TabActivity implements RadioGroup.OnCheck
         play= (ImageButton) findViewById(R.id.inter_search_play_or_pause);
         next= (ImageButton) findViewById(R.id.inter_search_next);
         song= (ImageButton) findViewById(R.id.inter_search_mini_image);
-        song_name= (TextView) findViewById(R.id.inter_search_song_name);
-        singer_name= (TextView) findViewById(R.id.inter_search_singer_name);
+        inter_mini= (LinearLayout) findViewById(R.id.inter_search_song);
+//        song_name= (TextView) findViewById(R.id.inter_search_song_name);
+//        singer_name= (TextView) findViewById(R.id.inter_search_singer_name);
     }
 
     public void preClick() throws IOException {

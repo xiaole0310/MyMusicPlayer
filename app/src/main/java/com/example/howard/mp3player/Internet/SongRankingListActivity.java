@@ -21,6 +21,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -62,8 +63,9 @@ public class SongRankingListActivity extends Activity {
     public ImageButton pre;
     public ImageButton next;
     public ImageButton song;
-    public TextView song_name;
-    public TextView singer_name;
+//    public TextView song_name;
+//    public TextView singer_name;
+    private LinearLayout list_mini;
     private MyApplication myApplication;
     private MusicPlayerService musicPlayerService;
     private String url;
@@ -85,8 +87,9 @@ public class SongRankingListActivity extends Activity {
         play= (ImageButton) findViewById(R.id.ranking_list_play_or_pause);
         next= (ImageButton) findViewById(R.id.ranking_list_next);
         song= (ImageButton) findViewById(R.id.ranking_list_mini_image);
-        song_name= (TextView) findViewById(R.id.ranking_list_song_name);
-        singer_name= (TextView) findViewById(R.id.ranking_list_singer_name);
+        list_mini= (LinearLayout) findViewById(R.id.ranking_list_song);
+//        song_name= (TextView) findViewById(R.id.ranking_list_song_name);
+//        singer_name= (TextView) findViewById(R.id.ranking_list_singer_name);
         myAdapter = new MyAdapter(this);
         rankingsonglist.setAdapter(myAdapter);
 
@@ -98,6 +101,13 @@ public class SongRankingListActivity extends Activity {
         //加载网络信息
         getRankingInfo(rankingnum);
         song.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SongRankingListActivity.this,PlayActivity.class);
+                startActivity(intent);
+            }
+        });
+        list_mini.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(SongRankingListActivity.this,PlayActivity.class);

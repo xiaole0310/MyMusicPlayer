@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TabHost;
@@ -33,11 +34,12 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
     public ImageButton pre;
     public ImageButton next;
     public ImageButton song;
-    public TextView song_name;
-    public TextView singer_name;
+//    public TextView song_name;
+//    public TextView singer_name;
     private MyApplication myApplication;
     private MusicPlayerService musicPlayerService;
     private String url;
+    private LinearLayout main_mini;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,13 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        main_mini.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,PlayActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -196,8 +205,9 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
         play= (ImageButton) findViewById(R.id.main_play_or_pause);
         next= (ImageButton) findViewById(R.id.main_next);
         song= (ImageButton) findViewById(R.id.main_mini_image);
-        song_name= (TextView) findViewById(R.id.main_song_name);
-        singer_name= (TextView) findViewById(R.id.main_singer_name);
+        main_mini= (LinearLayout) findViewById(R.id.main_song);
+//        song_name= (TextView) findViewById(R.id.main_song_name);
+//        singer_name= (TextView) findViewById(R.id.main_singer_name);
 
     }
 

@@ -49,8 +49,9 @@ public class SongRankingMainActivity extends Activity implements RecyclerViewAda
     public ImageButton pre;
     public ImageButton next;
     public ImageButton song;
-    public TextView song_name;
-    public TextView singer_name;
+//    public TextView song_name;
+//    public TextView singer_name;
+    private LinearLayout ranking_mini;
     private MyApplication myApplication;
     private MusicPlayerService musicPlayerService;
     private String url;
@@ -65,8 +66,9 @@ public class SongRankingMainActivity extends Activity implements RecyclerViewAda
         play= (ImageButton) findViewById(R.id.ranking_play_or_pause);
         next= (ImageButton) findViewById(R.id.ranking_next);
         song= (ImageButton) findViewById(R.id.ranking_mini_image);
-        song_name= (TextView) findViewById(R.id.ranking_song_name);
-        singer_name= (TextView) findViewById(R.id.ranking_singer_name);
+        ranking_mini = (LinearLayout) findViewById(R.id.ranking_song);
+//        song_name= (TextView) findViewById(R.id.ranking_song_name);
+//        singer_name= (TextView) findViewById(R.id.ranking_singer_name);
         myApplication= (MyApplication) getApplication();
         musicPlayerService=new MusicPlayerService();
         rankingTitleBeen=new RankingTitleBean();
@@ -77,6 +79,13 @@ public class SongRankingMainActivity extends Activity implements RecyclerViewAda
         getRankingInfo();
         recyclerViewAdapter.notifyDataSetChanged();
         song.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SongRankingMainActivity.this,PlayActivity.class);
+                startActivity(intent);
+            }
+        });
+        ranking_mini.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(SongRankingMainActivity.this,PlayActivity.class);
