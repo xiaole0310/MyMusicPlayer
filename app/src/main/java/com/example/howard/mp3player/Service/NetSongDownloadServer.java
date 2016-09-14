@@ -25,7 +25,7 @@ public class NetSongDownloadServer extends Service{
     private String songID;
     private String path=null;
     private DownloadManager downloadManager;
-    public static final String DOWNLOADPATH=Environment.getExternalStorageDirectory()+"/小7音乐盒下载";
+    public static final String DOWNLOADPATH=Environment.getExternalStorageDirectory()+"/吧主音乐盒下载";
     private String songname;
 
     @Override
@@ -80,8 +80,8 @@ public class NetSongDownloadServer extends Service{
         //只有WIFI可以下载
         downloadsong.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
         //发出通知，既后台下载
-        downloadsong.setDescription("小7音乐盒歌曲下载");
-        downloadsong.setTitle("小7音乐盒歌曲");
+        downloadsong.setDescription("吧主音乐盒歌曲下载");
+        downloadsong.setTitle("吧主音乐盒歌曲");
         //设置下载后文件存放的位置
         downloadsong.setDestinationInExternalPublicDir(DOWNLOADPATH,songname);
         //将下载请求放入队列
