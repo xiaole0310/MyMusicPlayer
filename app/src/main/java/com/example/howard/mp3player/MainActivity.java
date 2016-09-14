@@ -26,6 +26,14 @@ import com.example.howard.mp3player.Service.MusicPlayerService;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * 微信公众号：ysle_0313
+ * Created by 杨守乐 on 2016/9/14.
+ * Email：ysle0313@gmail.com
+ * QQ:1733563441
+ * 技术Q群：279126311
+ */
+
 public class MainActivity extends TabActivity implements RadioGroup.OnCheckedChangeListener{
     public TabHost tabHost;
     public RadioGroup radioGroup;
