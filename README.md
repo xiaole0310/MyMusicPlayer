@@ -35,4 +35,6 @@ You in use if you have any question, please timely feedback to me, you can use t
 * QQ Group: [`1733563441`](http://wpa.qq.com/msgrd? v=3&amp;uin=1733563441&amp;site=qq&amp;menu=yes)
 * CSDN: [`@http://blog.csdn.net/xiaole0313`](http://blog.csdn.net/xiaole0313)
 
+## 扫一扫微信公众号
 
+![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/music/src/main/res/drawable-ldpi/music9.png)
