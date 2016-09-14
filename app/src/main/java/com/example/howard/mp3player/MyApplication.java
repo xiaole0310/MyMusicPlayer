@@ -14,7 +14,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Howard on 2016/7/2.
+ * 微信公众号：ysle_0313
+ * Created by 杨守乐 on 2016/9/14.
+ * Email：ysle0313@gmail.com
+ * QQ:1733563441
+ * 技术Q群：279126311
  */
 public class MyApplication extends Application {
     public List<Map<String, Object>> mydatalist;
