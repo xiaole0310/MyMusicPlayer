@@ -1,5 +1,5 @@
 # MyMusicPlayer
-[`MyMusicPlayer`](https://github.com/xiaole0310/LoginButtons)
+[`MyMusicPlayer`](https://github.com/xiaole0310/MyMusicPlayer)
 开源:本项目是一个安卓的在线音乐项目源码，歌曲数据来源于百度音乐盒接口。可以实现歌曲的在线搜索和下载。
 
 # Links
@@ -8,7 +8,6 @@
 
 # Dependencies
 
-* Ui and Cross-Thread: [`LoginButtons`](https://github.com/xiaole0310/LoginButtons)
 * JSON: [`Gson`](https://github.com/google/gson)
 
 
