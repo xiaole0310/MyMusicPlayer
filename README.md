@@ -36,4 +36,4 @@ You in use if you have any question, please timely feedback to me, you can use t
 
 ## 扫一扫微信公众号
 
-![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/music/src/main/res/drawable-ldpi/study_tech.png)
+![shot](https://github.com/xiaole0310/screenshot/study_tech.png)
