@@ -8,10 +8,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteCantOpenDatabaseException;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -268,10 +270,12 @@ public class SongRankingListActivity extends Activity {
     }
 
     public void changeToPlay(){
-        play.setBackground(this.getResources().getDrawable(R.drawable.mini_play));
+        play.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.mini_play));
     }
+//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+
     public void changeToPause(){
-        play.setBackground(this.getResources().getDrawable(R.drawable.mini_pause));
+        play.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.mini_pause));
     }
 
 
@@ -399,7 +403,7 @@ public class SongRankingListActivity extends Activity {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
 //            Log.e("urlpath",rankingsongbeanlist.get(position).getPic_small());
-            Picasso.with(context).load(rankingsongbeanlist.get(position).getPic_small()).into(viewHolder.song_Image);
+            Picasso.get().load(rankingsongbeanlist.get(position).getPic_small()).into(viewHolder.song_Image);
 //            Log.e("urlpath",rankingsongbeanlist.get(position).getPic_small());
 //            viewHolder.song_Image.setImageBitmap(imageUtils.getImg(rankingsongbeanlist.get(position).getPic_small()));
             viewHolder.song_name.setText(rankingsongbeanlist.get(position).getTitle());
@@ -470,7 +474,7 @@ public class SongRankingListActivity extends Activity {
 
                 case SET_RANKINGBEAN:
                     getRankingSongInfo();
-                    Picasso.with(context).load(songRankingBean.getBillboard().getPic_s210()).into(rankingimage);
+                    Picasso.get().load(songRankingBean.getBillboard().getPic_s210()).into(rankingimage);
 //                    rankingimage.setImageBitmap(imageUtils.getImg(songRankingBean.getBillboard().getPic_s210()));
                     rankingname.setText(songRankingBean.getBillboard().getName()+" Top 50");
                     refreshListView();

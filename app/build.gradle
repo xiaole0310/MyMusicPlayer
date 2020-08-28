@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 30
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "com.example.howard.mp3player"
-        minSdkVersion 19
-        targetSdkVersion 23
+        minSdkVersion 15
+        targetSdkVersion 30
+
         versionCode 1
         versionName "1.0"
     }
@@ -20,16 +21,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.+'
-    compile 'com.squareup.retrofit2:retrofit:2.0.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
-    compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.jcodecraeer:xrecyclerview:1.2.7'
-    compile files('libs/httpclient-4.2.5.jar')
-    compile files('libs/httpclient-cache-4.2.5.jar')
-    compile files('libs/fastjson-1.2.2.jar')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.7'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.jcodecraeer:xrecyclerview:1.2.7'
+    implementation files('libs/httpclient-4.2.5.jar')
+    implementation files('libs/httpclient-cache-4.2.5.jar')
+    implementation files('libs/fastjson-1.2.2.jar')
 }

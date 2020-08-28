@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.howard.mp3player">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,8 +12,9 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar">
-        // android:theme="@style/AppTheme"
+        android:theme="@android:style/Theme.NoTitleBar"
+        tools:ignore="GoogleAppIndexingWarning">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LocalSongInfo.PlayActivity" />
+
+
+        <activity android:name=".LocalSongInfo.PlayActivity"></activity>
 
         <service android:name=".Service.MusicPlayerService" />
         <service android:name=".Service.NetSongDownloadServer" />

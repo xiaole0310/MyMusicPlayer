@@ -12,14 +12,14 @@
 
 
 # Screenshot
-![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music1.png)
-![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music2.png)
-![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music3.png)
-![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music4.png)
-![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music5.png)
-![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music6.png)
-![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music7.png)
-![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music8.png)
+![MyMusicPlayer](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music1.png)
+![MyMusicPlayer](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music2.png)
+![MyMusicPlayer](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music3.png)
+![MyMusicPlayer](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music4.png)
+![MyMusicPlayer](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music5.png)
+![MyMusicPlayer](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music6.png)
+![MyMusicPlayer](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music7.png)
+![MyMusicPlayer](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/music8.png)
 
 
 ## Feedback
@@ -36,4 +36,4 @@ You in use if you have any question, please timely feedback to me, you can use t
 
 ## 扫一扫微信公众号
 
-![shot](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/study_tech.png)
+![MyMusicPlayer](https://github.com/xiaole0310/MyMusicPlayer/blob/master/screenshot/study_tech.png)
